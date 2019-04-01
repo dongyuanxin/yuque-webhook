@@ -64,11 +64,12 @@ function unpack() {
   const _unpack = () => {
     if(running) {
       more = true
+      console.log('<<< busy run')
       return
     }
     
     running = true
-    process.exec('hexo', (error, stdout) => {
+    process.exec('hexo clean && hexo d', (error, stdout) => {
       if(error) {
         console.log('<<< fail hexo unpack', error.message)
         return
